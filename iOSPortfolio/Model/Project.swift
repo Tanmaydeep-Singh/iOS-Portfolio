@@ -6,9 +6,15 @@
 //
 import Foundation
 
+enum ProjectType: String, Codable, Hashable {
+    case jokeGenerator
+}
+
 struct Project: Identifiable, Hashable {
     let id = UUID()
     let title: String
     let subtitle: String
     let imageName: String
+    let type: ProjectType
+
 }

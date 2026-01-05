@@ -11,7 +11,6 @@ struct JokeView: View {
     @StateObject private var viewModel = JokeViewModel()
 
     var body: some View {
-        NavigationStack {
             VStack(spacing: 24) {
 
                 if viewModel.isLoading {
@@ -46,7 +45,6 @@ struct JokeView: View {
             .navigationTitle("Joke Generator")
         }
     }
-}
 
 
 #Preview {

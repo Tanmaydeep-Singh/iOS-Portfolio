@@ -24,6 +24,8 @@ struct ContentView: View {
                         SettingsView()
                     case .details:
                         SettingsView()
+                    case .project(let project):
+                            ProjectDetailView(project: project)
                     }
                 }
         } .environmentObject(themeManager)

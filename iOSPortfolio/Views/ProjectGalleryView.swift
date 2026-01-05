@@ -18,10 +18,11 @@ struct ProjectGalleryView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 16) {
-                ForEach(sampleProjects) { project in
+                ForEach(projects) { project in
                     ProjectCardView(project: project)
                         .onTapGesture {
-                    
+                            path.append(Route.project(project))
+
                         }
                 }
             }
@@ -44,17 +45,11 @@ struct ProjectGalleryView: View {
 #Preview {
     ProjectGalleryView(path: .constant(NavigationPath()))
 }
-
-let sampleProjects: [Project] = [
-    Project(title: "Storyloom",
-            subtitle: "Story reading platform",
-            imageName: "book.fill"),
-
-    Project(title: "AppGuard",
-            subtitle: "App blocking tool",
-            imageName: "lock.fill"),
-
-    Project(title: "Portfolio",
-            subtitle: "SwiftUI portfolio app",
-            imageName: "person.crop.square")
+let projects: [Project] = [
+    Project(
+        title: "Joke Generator",
+        subtitle: "Async API based app",
+        imageName: "face.smiling",
+        type: .jokeGenerator
+    )
 ]
