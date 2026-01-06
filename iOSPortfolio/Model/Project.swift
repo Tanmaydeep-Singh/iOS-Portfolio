@@ -8,6 +8,7 @@ import Foundation
 
 enum ProjectType: String, Codable, Hashable {
     case jokeGenerator
+    case stopwatch
 }
 
 struct Project: Identifiable, Hashable {

@@ -51,5 +51,11 @@ let projects: [Project] = [
         subtitle: "Async API based app",
         imageName: "face.smiling",
         type: .jokeGenerator
+    ),
+    Project(
+        title: "Stop Watch",
+        subtitle: "A simple stopwatch",
+        imageName: "watch",
+        type: .stopwatch
     )
 ]

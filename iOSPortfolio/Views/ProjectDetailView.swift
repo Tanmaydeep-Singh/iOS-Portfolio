@@ -15,6 +15,9 @@ struct ProjectDetailView: View {
 
         case .jokeGenerator:
             JokeView()
+            
+        case .stopwatch:
+            StopwatchView()
 
         }
     }
