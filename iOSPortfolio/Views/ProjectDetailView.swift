@@ -18,6 +18,9 @@ struct ProjectDetailView: View {
             
         case .stopwatch:
             StopwatchView()
+        
+        case .journal:
+            JournalListView()
 
         }
     }

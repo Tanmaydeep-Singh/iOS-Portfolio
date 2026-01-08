@@ -6,8 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		144EE62A2F2A190E0030FBCA /* Journal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144EE6292F2A190E0030FBCA /* Journal+CoreDataProperties.swift */; };
+		144EE62B2F2A190E0030FBCA /* Journal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144EE6282F2A190E0030FBCA /* Journal+CoreDataClass.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		144EE4B32F2508AF0030FBCA /* iOSPortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSPortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		144EE6282F2A190E0030FBCA /* Journal+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Journal+CoreDataClass.swift"; sourceTree = "<group>"; };
+		144EE6292F2A190E0030FBCA /* Journal+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Journal+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +39,8 @@
 		144EE4AA2F2508AF0030FBCA = {
 			isa = PBXGroup;
 			children = (
+				144EE6282F2A190E0030FBCA /* Journal+CoreDataClass.swift */,
+				144EE6292F2A190E0030FBCA /* Journal+CoreDataProperties.swift */,
 				144EE4B52F2508AF0030FBCA /* iOSPortfolio */,
 				144EE4B42F2508AF0030FBCA /* Products */,
 			);
@@ -119,6 +128,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				144EE62A2F2A190E0030FBCA /* Journal+CoreDataProperties.swift in Sources */,
+				144EE62B2F2A190E0030FBCA /* Journal+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

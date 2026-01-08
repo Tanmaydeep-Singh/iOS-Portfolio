@@ -12,6 +12,5 @@ enum Route: Hashable {
     case details
     case settings
     case project(Project)
-    
-
 }
+

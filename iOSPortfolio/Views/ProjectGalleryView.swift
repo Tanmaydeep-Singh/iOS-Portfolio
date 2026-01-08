@@ -4,6 +4,7 @@
 //
 //  Created by tanmaydeep on 24/01/26.
 //
+
 import SwiftUI
 
 struct ProjectGalleryView: View {
@@ -45,6 +46,7 @@ struct ProjectGalleryView: View {
 #Preview {
     ProjectGalleryView(path: .constant(NavigationPath()))
 }
+
 let projects: [Project] = [
     Project(
         title: "Joke Generator",
@@ -57,5 +59,11 @@ let projects: [Project] = [
         subtitle: "A simple stopwatch",
         imageName: "watch",
         type: .stopwatch
+    ),
+    Project(
+        title: "Journal",
+        subtitle: "My journal with core data",
+        imageName: "pen.on.paper",
+        type: .journal
     )
 ]
