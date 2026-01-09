@@ -4,52 +4,40 @@
 //
 //  Created by tanmaydeep on 28/01/26.
 //
-
 import SwiftUI
+
 struct JournalView: View {
-    @StateObject var viewModel: JournalDetailViewModel
-    @Environment(\.dismiss) var dismiss
-    @State private var isEditing = false
+    let id: UUID
+    private let service = JournalService()
+    
+    @State private var journal: Journal?
 
     var body: some View {
-        Form {
-            Section(header: Text("Title")) {
-                if isEditing {
-                    TextField("Enter Title", text: $viewModel.title)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                if let journal = journal {
+                    Text(journal.title ?? "Untitled")
+                        .font(.largeTitle)
+                        .bold()
+                    
+                    Text(journal.date?.formatted(date: .long, time: .shortened) ?? "")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    
+                    Divider()
+                    
+                    Text(journal.body ?? "")
+                        .font(.body)
                 } else {
-                    Text(viewModel.title).font(.headline)
+                    ProgressView("Fetching journal...")
                 }
             }
-
-            Section(header: Text("Content")) {
-                if isEditing {
-                    TextEditor(text: $viewModel.bodyText)
-                        .frame(minHeight: 200)
-                } else {
-                    Text(viewModel.bodyText)
-                }
-            }
+            .padding()
         }
-        .navigationTitle("Entry Details")
-        .toolbar {
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Button(role: .destructive) {
-                    viewModel.deleteJournal {
-                        dismiss()
-                    }
-                } label: {
-                    Image(systemName: "trash")
-                }
-
-                Button(isEditing ? "Save" : "Edit") {
-                    if isEditing {
-                        viewModel.updateJournal()
-                    }
-                    isEditing.toggle()
-                }
-            }
+        .navigationTitle("Journal Entry")
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            self.journal = service.fetchJournal(withId: id)
         }
     }
 }
-
-

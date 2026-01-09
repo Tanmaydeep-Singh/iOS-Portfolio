@@ -21,18 +21,19 @@ struct JournalListView: View {
                 )
                 Spacer()
             } else {
+                // Inside JournalListView.swift -> List section
                 List(vm.journals) { journal in
-                    NavigationLink(
-                        destination: Text("Detail for \(journal.title ?? "")")
-                    ) {
-                        VStack(alignment: .leading) {
-                            Text(journal.title ?? "")
-                                .font(.headline)
+                    if let id = journal.id {
+                        NavigationLink(destination: JournalView(id: id)) {
+                            VStack(alignment: .leading) {
+                                Text(journal.title ?? "Untitled")
+                                    .font(.headline)
 
-                            Text(journal.body ?? "")
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                                .lineLimit(1)
+                                Text(journal.body ?? "")
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                                    .lineLimit(1)
+                            }
                         }
                     }
                 }

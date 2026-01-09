@@ -28,6 +28,8 @@ struct ContentView: View {
                             ProjectDetailView(project: project)
                     case .addJournal:
                             AddJournalView()
+                    case .journalDetail(let id): 
+                        JournalView(id: id)
                     }
                     
                 }

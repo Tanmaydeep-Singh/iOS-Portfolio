@@ -12,6 +12,7 @@ enum Route: Hashable {
     case details
     case settings
     case addJournal
+    case journalDetail(UUID) // Add this case
     case project(Project)
 }
 

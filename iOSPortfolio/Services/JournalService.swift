@@ -26,7 +26,6 @@ class JournalService {
 
     func fetchJournals() -> [Journal] {
         let request: NSFetchRequest<Journal> = Journal.fetchRequest()
-        // Adding a sort descriptor is always a good idea for lists
         request.sortDescriptors = [NSSortDescriptor(keyPath: \Journal.date, ascending: false)]
         
         do {
@@ -34,6 +33,18 @@ class JournalService {
         } catch {
             print("Failed to fetch journals: \(error.localizedDescription)")
             return []
+        }
+    }
+    
+    func fetchJournal(withId id: UUID) -> Journal? {
+        let request: NSFetchRequest<Journal> = Journal.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        
+        do {
+            return try context.fetch(request).first
+        } catch {
+            print("Failed to fetch journal: \(error.localizedDescription)")
+            return nil
         }
     }
     
