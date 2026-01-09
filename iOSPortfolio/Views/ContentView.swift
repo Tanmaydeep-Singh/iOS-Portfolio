@@ -26,7 +26,10 @@ struct ContentView: View {
                         SettingsView()
                     case .project(let project):
                             ProjectDetailView(project: project)
+                    case .addJournal:
+                            AddJournalView()
                     }
+                    
                 }
         } .environmentObject(themeManager)
             .preferredColorScheme(

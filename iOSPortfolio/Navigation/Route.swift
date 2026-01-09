@@ -11,6 +11,7 @@ enum Route: Hashable {
     case projectGallery
     case details
     case settings
+    case addJournal
     case project(Project)
 }
 

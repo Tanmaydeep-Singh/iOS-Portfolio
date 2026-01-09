@@ -4,29 +4,32 @@
 //
 //  Created by tanmaydeep on 28/01/26.
 //
-
 import SwiftUI
 
 struct JournalListView: View {
-    private var journalEntries: [JournalModel] = journalData
-    
+
+    @StateObject private var vm = JournalListViewModel()
+
     var body: some View {
         VStack {
-            if journalEntries.isEmpty {
+            if vm.journals.isEmpty {
                 Spacer()
-                Text("No Entries")
-                    .font(.largeTitle)
-                    .foregroundColor(.secondary)
-                    .padding()
+                ContentUnavailableView(
+                    "No Journals",
+                    systemImage: "book.pages",
+                    description: Text("Tap the + button to start your first entry.")
+                )
                 Spacer()
             } else {
-                List(journalEntries) { entry in
-                   
-                    NavigationLink(destination: Text("Detail for \(entry.title)")) {
+                List(vm.journals) { journal in
+                    NavigationLink(
+                        destination: Text("Detail for \(journal.title ?? "")")
+                    ) {
                         VStack(alignment: .leading) {
-                            Text(entry.title)
+                            Text(journal.title ?? "")
                                 .font(.headline)
-                            Text(entry.body)
+
+                            Text(journal.body ?? "")
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                                 .lineLimit(1)
@@ -38,30 +41,32 @@ struct JournalListView: View {
         .navigationTitle("Journal")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            NavigationLink(destination: Text("New Entry")) {
-                Image(systemName: "plus")
-            }
+            NavigationLink(value: Route.addJournal) {
+                   Image(systemName: "plus")
+               }
+        }
+        .onAppear {
+            vm.fetchJournals()
         }
     }
 }
 
+
 private let journalData: [JournalModel] = [
-    JournalModel(
-        id: 1,
-        title: "First Entry",
-        body: "This is the first entry in my journal. I'm excited to start writing more.",
-        date: Date()
-    ),
-    JournalModel(
-        id: 2,
-        title: "Second Entry",
-        body: "This is the second entry in my journal. Working on the UI today.",
-        date: Date()
-    )
+//    JournalModel(
+//        id: 1,
+//        title: "First Entry",
+//        body: "This is the first entry in my journal. I'm excited to start writing more.",
+//        date: Date()
+//    ),
+//    JournalModel(
+//        id: 2,
+//        title: "Second Entry",
+//        body: "This is the second entry in my journal. Working on the UI today.",
+//        date: Date()
+//    )
 ]
 
 #Preview {
-    NavigationStack { // Added NavigationStack so the title shows up in Preview
-        JournalListView()
-    }
+    JournalListView()
 }
